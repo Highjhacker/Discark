@@ -11,7 +11,7 @@ class CoinMarketCap:
     async def get_price(self):
         try:
             r = requests.get("https://api.coinmarketcap.com/v1/ticker/ark/")
-            price = r.json()[0]["price"]
+            price = r.json()[0]["price_usd"]
             await self.bot.say(price)
         except commands.CommandError as e:
             await self.bot.say("Command invalid.")
