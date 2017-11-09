@@ -23,7 +23,7 @@ class ArkUtils:
     async def get_subreddit(self):
         await self.bot.say("https://www.reddit.com/r/ArkEcosystem")
 
-    @commands.command(name="calculator")
+    @commands.command(name="calc")
     async def calculator(self, delegate_name=None):
         """
         A modifier impérativement parce que c'est le foutoir, mais c'était histoire de vite faire et d'avoir un prototype

@@ -87,30 +87,41 @@ class CoinMarketCap:
         total_supply = r.json()[0]["total_supply"]
         return total_supply
 
-    @commands.command(name="infos")
+    @commands.command(name="info")
     async def say_infos(self):
         try:
-            embed = discord.Embed(title="Ark(Ark) - CoinMarketCap full informations", colour=discord.Colour.dark_red())
+            embed = discord.Embed(title="{0}({1}) - CoinMarketCap".format(self.get_name(), self.get_symbol()), colour=discord.Colour.dark_red())
             embed.set_thumbnail(url="https://ark.io/images/mediakit/Red-Toxic.png")
 
-            embed.add_field(name="Name", value=self.get_name(), inline=False)
-            embed.add_field(name="Symbol", value=self.get_symbol(), inline=False)
+            #embed.add_field(name="Name", value=self.get_name(), inline=True)
+            #embed.add_field(name="Symbol", value=self.get_symbol(), inline=True)
+            #embed.add_field(name="ID", value=self.get_id(), inline=True)
             embed.add_field(name="Rank", value=self.get_rank(), inline=False)
-            embed.add_field(name="ID", value=self.get_id(), inline=False)
 
-            embed.add_field(name="Price", value=self.get_price() + " $", inline=False)
-            embed.add_field(name="Price (BTC)", value=self.get_price_btc() + " BTC", inline=False)
+            embed.add_field(name="Price", value=self.get_price() + " $", inline=True)
+            embed.add_field(name="Price (BTC)", value=self.get_price_btc() + " BTC", inline=True)
 
             embed.add_field(name="Volume (24h)", value=self.get_volume_usd() + " $", inline=False)
-            embed.add_field(name="Market Cap", value=self.get_market_cap() + "$", inline=False)
+            embed.add_field(name="Market Cap", value=self.get_market_cap() + " $", inline=False)
 
-            embed.add_field(name="Circulating supply", value=self.get_available_supply(), inline=False)
-            embed.add_field(name="Max supply", value=self.get_max_supply(), inline=False)
-            embed.add_field(name="Total supply", value=self.get_total_supply(), inline=False)
+            embed.add_field(name="Circulating supply", value=self.get_available_supply() + " Ѧ", inline=False)
+            #embed.add_field(name="Max supply", value=self.get_max_supply(), inline=False)
+            embed.add_field(name="Total supply", value=self.get_total_supply() + " Ѧ", inline=False)
 
-            embed.add_field(name="% change (1h)", value=self.get_percent_change_one_hour() + " %", inline=False)
-            embed.add_field(name="% change (24h)", value=self.get_percent_change_day() + " %", inline=False)
-            embed.add_field(name="% change (7days)", value=self.get_percent_change_week() + " %", inline=False)
+            if float(self.get_percent_change_one_hour()) > 0.00:
+                embed.add_field(name="% change (1h)", value=self.get_percent_change_one_hour() + " % :arrow_up:", inline=False)
+            else:
+                embed.add_field(name="% change (1h)", value=self.get_percent_change_one_hour() + " % :arrow_down:", inline=False)
+
+            if float(self.get_percent_change_day()) > 0.00:
+                embed.add_field(name="% change (24h)", value=self.get_percent_change_day() + " % :arrow_up:", inline=False)
+            else:
+                embed.add_field(name="% change (24h)", value=self.get_percent_change_day() + " % :arrow_down:", inline=False)
+
+            if float(self.get_percent_change_week()) > 0.00:
+                embed.add_field(name="% change (7days)", value=self.get_percent_change_week() + " % :arrow_up:", inline=False)
+            else:
+                embed.add_field(name="% change (7days)", value=self.get_percent_change_week() + " % :arrow_down:", inline=False)
 
             embed.add_field(name="Last update", value=self.get_last_updated(), inline=False)
 
