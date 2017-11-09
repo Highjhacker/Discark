@@ -23,6 +23,10 @@ async def on_ready():
     print(bot.user.id)
     print('------')
 
+@bot.event
+async def wait_until_login():
+    await bot.change_presence(game=discord.Game(name="Ark price is MOON$"))
+
 if __name__ == '__main__':
     for extension in initial_extensions:
         try:
