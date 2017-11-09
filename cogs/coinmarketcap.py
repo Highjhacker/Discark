@@ -15,3 +15,7 @@ class CoinMarketCap:
             await self.bot.say(price)
         except commands.CommandError as e:
             await self.bot.say("Command invalid.")
+
+
+def setup(bot):
+    bot.add_cog(CoinMarketCap(bot))
