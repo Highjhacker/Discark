@@ -11,7 +11,7 @@ Note : The msg can't exceed 2000 chars
 description = """ DiscArk : The Ark Ecosystem Discord Bot. Next stop : The moon. """
 
 initial_extensions = [
-
+    'cogs.coinmarketcap'
 ]
 
 bot = commands.Bot(command_prefix=commands.when_mentioned_or("$"), description=description)
@@ -29,4 +29,4 @@ if __name__ == '__main__':
             bot.load_extension(extension)
         except Exception as e:
             print('Failed to load extension {}\n{}: {}'.format(extension, type(e).__name__, e))
-bot.run(os.environ.get('DISCORD_PRIVATE_KEY'))
+    bot.run(os.environ.get('DISCORD_PRIVATE_KEY'))
