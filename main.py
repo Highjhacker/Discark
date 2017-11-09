@@ -15,7 +15,7 @@ description = """ DiscArk : The Ark Ecosystem Discord Bot. Next stop : The moon.
 
 initial_extensions = [
     'cogs.coinmarketcap',
-    'cogs.ark_utils'
+    'cogs.ark_utils',
 ]
 
 bot = commands.Bot(command_prefix=commands.when_mentioned_or("$"), description=description)

@@ -87,7 +87,7 @@ class CoinMarketCap:
         total_supply = r.json()[0]["total_supply"]
         return total_supply
 
-    @commands.command(name="infos cmc")
+    @commands.command(name="infos")
     async def say_infos(self):
         try:
             embed = discord.Embed(title="Ark(Ark) - CoinMarketCap full informations", colour=discord.Colour.dark_red())
@@ -118,7 +118,7 @@ class CoinMarketCap:
         except commands.CommandError as e:
             await self.bot.say("Command invalid.")
 
-    @commands.command(name="price cmc")
+    @commands.command(name="price")
     async def say_price(self):
         try:
             embed = discord.Embed(title="Ark(ARK) - CoinMarketCap", colour=discord.Colour.dark_red())
