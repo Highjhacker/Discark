@@ -19,6 +19,7 @@ Ark Discord bot.
 - [ ] Handle Bittrex
 - [ ] Handle Binance
 - [ ] Handle others site like CoinMarketCap
+- [ ] Allow the user to specify the fiat for the Ark Price (Yen, Euros, Dollars, ...)
 - ...
 
 ## Authors

@@ -2,98 +2,97 @@ import discord
 import requests
 from discord.ext import commands
 import arrow
-from datetime import datetime
 
 
 class CoinMarketCap:
     def __init__(self, bot):
         self.bot = bot
+        self.base_url = "https://api.coinmarketcap.com/v1/ticker/"
 
-    def get_full_infos(self):
-        r = requests.get("https://api.coinmarketcap.com/v1/ticker/ark/")
-
-        return r.json()[0]#json.dumps(r.json()[0], indent=4, sort_keys=True)
+    def get(self, endpoint):
+        return requests.get(self.base_url + endpoint)
 
     def get_price(self):
-        r = requests.get("https://api.coinmarketcap.com/v1/ticker/ark/")
+        r = self.get("ark/")
         price = r.json()[0]["price_usd"]
         return price
 
     def get_volume_usd(self):
-        r = requests.get("https://api.coinmarketcap.com/v1/ticker/ark/")
+        r = self.get("ark/")
         volume = r.json()[0]["24h_volume_usd"]
         return volume
 
     def get_available_supply(self):
-        r = requests.get("https://api.coinmarketcap.com/v1/ticker/ark/")
+        r = self.get("ark/")
         available_supply = r.json()[0]["available_supply"]
         return available_supply
 
     def get_id(self):
-        r = requests.get("https://api.coinmarketcap.com/v1/ticker/ark/")
+        r = self.get("ark/")
         id = r.json()[0]["id"]
         return id
 
     def get_last_updated(self):
-        r = requests.get("https://api.coinmarketcap.com/v1/ticker/ark/")
+        r = self.get("ark/")
         last_updated = r.json()[0]["last_updated"]
         return arrow.Arrow.fromtimestamp(last_updated).humanize()
 
     def get_market_cap(self):
-        r = requests.get("https://api.coinmarketcap.com/v1/ticker/ark/")
+        r = self.get("ark/")
         market_cap = r.json()[0]["market_cap_usd"]
         return market_cap
 
     def get_max_supply(self):
-        r = requests.get("https://api.coinmarketcap.com/v1/ticker/ark/")
+        r = self.get("ark/")
         max_supply = r.json()[0]["max_supply"]
         return max_supply
 
     def get_name(self):
-        r = requests.get("https://api.coinmarketcap.com/v1/ticker/ark/")
+        r = self.get("ark/")
         name = r.json()[0]["name"]
         return name
 
     def get_percent_change_one_hour(self):
-        r = requests.get("https://api.coinmarketcap.com/v1/ticker/ark/")
+        r = self.get("ark/")
         price = r.json()[0]["percent_change_1h"]
         return price
 
     def get_percent_change_day(self):
-        r = requests.get("https://api.coinmarketcap.com/v1/ticker/ark/")
+        r = self.get("ark/")
         price = r.json()[0]["percent_change_24h"]
         return price
 
     def get_percent_change_week(self):
-        r = requests.get("https://api.coinmarketcap.com/v1/ticker/ark/")
+        r = self.get("ark/")
         price = r.json()[0]["percent_change_7d"]
         return price
 
     def get_price_btc(self):
-        r = requests.get("https://api.coinmarketcap.com/v1/ticker/ark/")
+        r = self.get("ark/")
         price = r.json()[0]["price_btc"]
         return price
 
     def get_rank(self):
-        r = requests.get("https://api.coinmarketcap.com/v1/ticker/ark/")
+        r = self.get("ark/")
         rank = r.json()[0]["rank"]
         return rank
 
     def get_symbol(self):
-        r = requests.get("https://api.coinmarketcap.com/v1/ticker/ark/")
+        r = self.get("ark/")
         symbol = r.json()[0]["symbol"]
         return symbol
 
     def get_total_supply(self):
-        r = requests.get("https://api.coinmarketcap.com/v1/ticker/ark/")
+        r = self.get("ark/")
         total_supply = r.json()[0]["total_supply"]
         return total_supply
 
-    @commands.command(name="infos")
+    @commands.command(name="infos cmc")
     async def say_infos(self):
         try:
             embed = discord.Embed(title="Ark(Ark) - CoinMarketCap full informations", colour=discord.Colour.dark_red())
             embed.set_thumbnail(url="https://ark.io/images/mediakit/Red-Toxic.png")
+
             embed.add_field(name="Name", value=self.get_name(), inline=False)
             embed.add_field(name="Symbol", value=self.get_symbol(), inline=False)
             embed.add_field(name="Rank", value=self.get_rank(), inline=False)
@@ -119,7 +118,7 @@ class CoinMarketCap:
         except commands.CommandError as e:
             await self.bot.say("Command invalid.")
 
-    @commands.command(name="price")
+    @commands.command(name="price cmc")
     async def say_price(self):
         try:
             embed = discord.Embed(title="Ark(ARK) - CoinMarketCap", colour=discord.Colour.dark_red())

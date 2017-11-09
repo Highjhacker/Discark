@@ -14,7 +14,8 @@ Note : The msg can't exceed 2000 chars
 description = """ DiscArk : The Ark Ecosystem Discord Bot. Next stop : The moon. """
 
 initial_extensions = [
-    'cogs.coinmarketcap'
+    'cogs.coinmarketcap',
+    'cogs.ark_utils'
 ]
 
 bot = commands.Bot(command_prefix=commands.when_mentioned_or("$"), description=description)
@@ -36,6 +37,7 @@ async def update_bot_status_background():
     while not bot.is_closed:
         await bot.change_presence(game=discord.Game(name="{0} $".format(await get_status_price())))
         await asyncio.sleep(5)
+
 
 if __name__ == '__main__':
     for extension in initial_extensions:
