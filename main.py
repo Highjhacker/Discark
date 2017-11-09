@@ -19,7 +19,6 @@ initial_extensions = [
 
 bot = commands.Bot(command_prefix=commands.when_mentioned_or("$"), description=description)
 
-
 async def get_status_price():
     r = requests.get("https://api.coinmarketcap.com/v1/ticker/ark/")
     price = r.json()[0]["price_usd"]
@@ -32,7 +31,7 @@ async def on_ready():
     print(bot.user.id)
     print('------')
 
-async def test_background():
+async def update_bot_status_background():
     await bot.wait_until_ready()
     while not bot.is_closed:
         await bot.change_presence(game=discord.Game(name="{0} $".format(await get_status_price())))
@@ -44,5 +43,5 @@ if __name__ == '__main__':
             bot.load_extension(extension)
         except Exception as e:
             print('Failed to load extension {}\n{}: {}'.format(extension, type(e).__name__, e))
-    bot.loop.create_task(test_background())
+    bot.loop.create_task(update_bot_status_background())
     bot.run(os.environ.get('DISCORD_PRIVATE_KEY'))
