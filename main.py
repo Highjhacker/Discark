@@ -1,10 +1,7 @@
 import discord
 from discord.ext import commands
-import sys
 import os
-import traceback
 import asyncio
-from cogs.coinmarketcap import CoinMarketCap
 import requests
 
 """
@@ -26,6 +23,7 @@ async def get_status_price():
     price = r.json()[0]["price_usd"]
     return price
 
+
 @bot.event
 async def on_ready():
     print('Logged in as')
@@ -37,7 +35,7 @@ async def update_bot_status_background():
     await bot.wait_until_ready()
     while not bot.is_closed:
         await bot.change_presence(game=discord.Game(name="{0} $".format(await get_status_price())))
-        await asyncio.sleep(5)
+        await asyncio.sleep(30)
 
 
 if __name__ == '__main__':
