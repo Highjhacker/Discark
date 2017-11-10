@@ -2,6 +2,7 @@ import discord
 import requests
 from discord.ext import commands
 import arrow
+import json
 
 
 class CoinMarketCap:
@@ -16,6 +17,18 @@ class CoinMarketCap:
         r = self.get("ark/")
         price = r.json()[0]["price_usd"]
         return price
+
+    def get_price_bis(self, fiat=""):
+        fiats = ["usd", "eur", "chf", "aud", "gbp", "jpy"]
+        if fiat:
+            if fiat in fiats:
+                r = json.loads(requests.get("https://api.coinmarketcap.com/v1/ticker/ark/?convert=%s" % fiat).text)
+                price = r[0]["price_%s" % fiat][0:7]
+                return price
+        else:
+            r = self.get("ark/")
+            price = r.json()[0]["price_usd"]
+            return price
 
     def get_volume_usd(self):
         r = self.get("ark/")
@@ -130,11 +143,11 @@ class CoinMarketCap:
             await self.bot.say("Command invalid.")
 
     @commands.command(name="price")
-    async def say_price(self):
+    async def say_price(self, fiat=""):
         try:
             embed = discord.Embed(title="Ark(ARK) - CoinMarketCap", colour=discord.Colour.dark_red())
             embed.set_thumbnail(url="https://ark.io/images/mediakit/Red-Toxic.png")
-            embed.add_field(name="Current price :", value=self.get_price() + " $")
+            embed.add_field(name="Current price :", value=self.get_price_bis(fiat) + " {0}".format(fiat))
             await self.bot.say(embed=embed)
         except commands.CommandError as e:
             await self.bot.say("Command invalid.")
