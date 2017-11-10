@@ -47,12 +47,12 @@ class ArkUtils:
             else:
                 await self.bot.say("Invalid delegate's name. The valids names are : jarunik, dafty, toons, reconnico, faustbrian, bioly")
         else:
-            await self.bot.say("https://docs.google.com/spreadsheets/d/1QawUqYa_e9YN_3Stb3-WYTdJ2BgnYqxsErYbA2ihXjo/edit?usp=sharing\n"
-                               "https://docs.google.com/spreadsheets/d/1FGo3FkC3uSWXGHatPQyny2brMWjAIJsHFCR-Lhkl_m0/edit?usp=sharing\n"
-                               "https://docs.google.com/spreadsheets/d/1dmFKza6cM3DYaNbKLlZg2rx6rZL5iLcYRLK5eEXXqD8/edit#gid=0\n"
-                               "http://calculator.reconnico.com/\n"
-                               "https://delegates.arkx.io/calculator\n"
-                               "http://pool.arkno.de/calculator.php\n")
+            await self.bot.say("<https://docs.google.com/spreadsheets/d/1QawUqYa_e9YN_3Stb3-WYTdJ2BgnYqxsErYbA2ihXjo/edit?usp=sharing>\n"
+                               "<https://docs.google.com/spreadsheets/d/1FGo3FkC3uSWXGHatPQyny2brMWjAIJsHFCR-Lhkl_m0/edit?usp=sharing>\n"
+                               "<https://docs.google.com/spreadsheets/d/1dmFKza6cM3DYaNbKLlZg2rx6rZL5iLcYRLK5eEXXqD8/edit#gid=0>\n"
+                               "<http://calculator.reconnico.com/>\n"
+                               "<https://delegates.arkx.io/calculator>\n"
+                               "<http://pool.arkno.de/calculator.php>\n")
 
 
 def setup(bot):
