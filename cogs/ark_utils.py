@@ -21,6 +21,18 @@ class ArkUtils:
     async def get_subreddit(self):
         await self.bot.say("https://www.reddit.com/r/ArkEcosystem")
 
+    @commands.command(name="51")
+    async def get_delegates_stats(self):
+        await self.bot.say("https://www.arknode.net/VoteReport.txt")
+
+    @commands.command(name="delmonitor")
+    async def get_delegate_monitor(self):
+        await self.bot.say("https://explorer.ark.io/delegateMonitor")
+
+    @commands.command(name="stats")
+    async def get_ark_stats(self):
+        await self.bot.say("https://arkstats.net/")
+
     @commands.command(name="calc")
     async def calculator(self, delegate_name=None):
         """
