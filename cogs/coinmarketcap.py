@@ -19,16 +19,49 @@ class CoinMarketCap:
         return price
 
     def get_price_bis(self, fiat=""):
-        fiats = ["usd", "eur", "chf", "aud", "gbp", "jpy"]
+        fiats = {
+            "usd": u"\u0024",    # $ dollars
+            "eur": u"\u20AC",    # euros
+            "aud": u"\u0024",    # $ Australian
+            "gbp": u"\u00A3",    # livres
+            "jpy": u"\u00A5",    # Yen
+            "brl": u"R\u0024",   # Brazil real
+            "cad": u"\u0024",    # $ Canada
+            "chf": u"CHF",       # Franc suisse
+            "clp": u"\u0024",    # Peso chilien
+            "cny": u"\u00A5",    # Yuan chinois
+            "czk": "CZK",        # couronnes tchèques
+            "dkk": "DKK",        # couronnes danoise
+            "hkd": u"HK\u0024",  # Hong Kong $
+            "huf": "HUF",        # Florins hongrois
+            "idr": "Rp",         # Roupie indonésienne
+            "ils": u"\u20AA",    # Shekel israélien
+            "inr": u"\u20B9",    # Rupee indienne
+            "krw": u"\u20A9",    # Won sud coréen
+            "mxn": u"\u0024",    # Peso mexicain
+            "myr": "MYR",        # Ringgit malais
+            "nok": "NOK",        # Couronne norvégienne
+            "nzd": "NZD",        # $ Néo zélandais
+            "php": u"\u20B1",    # Peso philipin
+            "pkr": u"\u20A8",    # Pakistan rupee
+            "pln": u"\u007A\u0142",     # Polish zloti
+            "rub": u"\u20BD",     # Russian ruble
+            "sek": "SEK",         # Couronne suédoise
+            "sgd": u"S\u0024",    # Singapour $
+            "thb": u"\u0E3F",     # Bat thailande
+            "try": u"\u20BA",     # Turkish lyra
+            "twd": u"NT\u0024",   # Taiwan $
+            "zar": "ZAR"          # Rand sud africain
+        }
         if fiat:
             if fiat in fiats:
                 r = json.loads(requests.get("https://api.coinmarketcap.com/v1/ticker/ark/?convert=%s" % fiat).text)
                 price = r[0]["price_%s" % fiat][0:7]
-                return price
+                return price + " {0}".format(fiats[fiat])
         else:
             r = self.get("ark/")
             price = r.json()[0]["price_usd"]
-            return price
+            return price + " $"
 
     def get_volume_usd(self):
         r = self.get("ark/")
@@ -147,7 +180,7 @@ class CoinMarketCap:
         try:
             embed = discord.Embed(title="Ark(ARK) - CoinMarketCap", colour=discord.Colour.dark_red())
             embed.set_thumbnail(url="https://ark.io/images/mediakit/Red-Toxic.png")
-            embed.add_field(name="Current price :", value=self.get_price_bis(fiat) + " {0}".format(fiat))
+            embed.add_field(name="Current price :", value=self.get_price_bis(fiat))
             await self.bot.say(embed=embed)
         except commands.CommandError as e:
             await self.bot.say("Command invalid.")
