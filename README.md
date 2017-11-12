@@ -22,7 +22,8 @@ Ark Discord bot.
 - [ ] Handle Markets
     - [ ] Binance
     - [x] Bittrex
-    - [ ] Cryptopia
+    - [x] Cryptopia
+        - [ ] Still some tweaks to do, but it works rn.
     - [ ] COSS
     - [ ] Cryptomate
     - [ ] LiteBit.eu

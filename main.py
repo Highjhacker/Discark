@@ -14,6 +14,7 @@ initial_extensions = [
     'cogs.coinmarketcap',
     'cogs.ark_utils',
     'cogs.bittrex',
+    'cogs.cryptopia',
 ]
 
 bot = commands.Bot(command_prefix=commands.when_mentioned_or("$"), description=description)
