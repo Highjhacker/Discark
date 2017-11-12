@@ -35,7 +35,7 @@ Ark Discord bot.
     - [ ] CryptoCompare
     - [ ] CoinGecko
     - [ ] WorldCoinIndex
-- [ ] Allow the user to specify the fiat for the Ark Price (Yen, Euros, Dollars, ...)
+- [x] Allow the user to specify the fiat for the Ark Price (Yen, Euros, Dollars, ...)
 - [ ] Better errors handling
 - [ ] DRY
 - [ ] Find a way to calculate the difference between two request for the Bittrex ticker and 
