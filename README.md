@@ -21,12 +21,13 @@ Ark Discord bot.
 - [ ] Unit testing
 - [ ] Handle Markets
     - [ ] Binance
-    - [ ] Bittrex
+    - [x] Bittrex
     - [ ] Cryptopia
     - [ ] COSS
     - [ ] Cryptomate
     - [ ] LiteBit.eu
 - [ ] Handle others site like CoinMarketCap
+    - [x] Coinmarketcap
     - [ ] BraveNewCoin
     - [ ] CoinMarketCap
     - [ ] CoinCodex

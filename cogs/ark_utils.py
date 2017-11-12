@@ -13,6 +13,10 @@ class ArkUtils:
     async def get_roadmap(self):
         await self.bot.say("https://ark.io/roadmap")
 
+    @commands.command(name="ark")
+    async def get_official_website(self):
+        await self.bot.say("https://ark.io/")
+
     @commands.command(name="ledger")
     async def get_ledger_tuto(self):
         await self.bot.say("https://blog.ark.io/full-ledger-nano-s-hardware-wallet-guide-for-ark-7bf7bfff4cef")
@@ -34,26 +38,21 @@ class ArkUtils:
         await self.bot.say("https://arkstats.net/")
 
     @commands.command(name="calc")
-    async def calculator(self, delegate_name=None):
-        """
-        A modifier impérativement parce que c'est le foutoir, mais c'était histoire de vite faire et d'avoir un prototype
-        fonctionnel.
-        """
-        valid_names = ["jarunik", "dafty", "toons", "reconnico", "faustbrian", "bioly"]
+    async def calculator(self, delegate_name=""):
+        #A modifier impérativement parce que c'est le foutoir, mais c'était histoire de vite faire et d'avoir un prototype
+        #fonctionnel.
+        delegates_list = {
+            "jarunik": "https://docs.google.com/spreadsheets/d/1QawUqYa_e9YN_3Stb3-WYTdJ2BgnYqxsErYbA2ihXjo/edit?usp=sharing",
+            "dafty": "https://docs.google.com/spreadsheets/d/1FGo3FkC3uSWXGHatPQyny2brMWjAIJsHFCR-Lhkl_m0/edit?usp=sharing",
+            "toons": "https://docs.google.com/spreadsheets/d/1FGo3FkC3uSWXGHatPQyny2brMWjAIJsHFCR-Lhkl_m0/edit?usp=sharing",
+            "reconnico": "http://calculator.reconnico.com/",
+            "faustbrian": "https://delegates.arkx.io/calculator",
+            "bioly": "http://pool.arkno.de/calculator.php"
+        }
+        delegate_name = delegate_name.lower()
         if delegate_name:
-            if delegate_name in valid_names:
-                if delegate_name == "jarunik":
-                    await self.bot.say("https://docs.google.com/spreadsheets/d/1QawUqYa_e9YN_3Stb3-WYTdJ2BgnYqxsErYbA2ihXjo/edit?usp=sharing")
-                if delegate_name == "dafty":
-                    await self.bot.say("https://docs.google.com/spreadsheets/d/1FGo3FkC3uSWXGHatPQyny2brMWjAIJsHFCR-Lhkl_m0/edit?usp=sharing")
-                if delegate_name == "toons":
-                    await self.bot.say("https://docs.google.com/spreadsheets/d/1dmFKza6cM3DYaNbKLlZg2rx6rZL5iLcYRLK5eEXXqD8/edit#gid=0")
-                if delegate_name == "reconnico":
-                    await self.bot.say("http://calculator.reconnico.com/")
-                if delegate_name == "faustbrian":
-                    await self.bot.say("https://delegates.arkx.io/calculator")
-                if delegate_name == "bioly":
-                    await self.bot.say("http://pool.arkno.de/calculator.php")
+            if delegate_name in delegates_list:
+                await self.bot.say(delegates_list[delegate_name])
             else:
                 await self.bot.say("Invalid delegate's name. The valids names are : jarunik, dafty, toons, reconnico, faustbrian, bioly")
         else:
