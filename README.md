@@ -26,7 +26,8 @@ Ark Discord bot.
         - [ ] Still some tweaks to do, but it works rn.
     - [ ] COSS
     - [ ] Cryptomate
-    - [ ] LiteBit.eu
+    - [x] LiteBit.eu
+        - [ ] Some tweaks and fixes to do, not sure about the embed in the constructor
 - [ ] Handle others site like CoinMarketCap
     - [x] Coinmarketcap
     - [ ] BraveNewCoin
@@ -43,6 +44,7 @@ display  if the price is up or down
 - [ ] PEP compliance
 - [ ] Better commands syntax
 - [ ] Try to regroup some fields inside the embed output
+- [ ] ASYNC ASYNC ASYNC (replace requests with aiohttp if possible)
 - ...
 
 ## Authors
