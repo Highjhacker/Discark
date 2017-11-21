@@ -40,8 +40,10 @@ class Cryptopia:
             for currency in args:
                 url += currency.upper() + ','
             r = json.loads(requests.get(url[:-1]).text)
+            if r["Response"] == "Error":
+                r = "This currency doesn't exist"
             return r
-        except requests.ConnectionError:
+        except requests.ConnectionError as e:
             return 1
 
     @commands.command(name="cchistoric")
