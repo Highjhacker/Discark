@@ -31,9 +31,8 @@ Ark Discord bot.
 - [ ] Handle others site like CoinMarketCap
     - [x] Coinmarketcap
     - [ ] BraveNewCoin
-    - [ ] CoinMarketCap
     - [ ] CoinCodex
-    - [ ] CryptoCompare
+    - [x] CryptoCompare
     - [ ] CoinGecko
     - [ ] WorldCoinIndex
 - [x] Allow the user to specify the fiat for the Ark Price (Yen, Euros, Dollars, ...)
@@ -45,6 +44,7 @@ display  if the price is up or down
 - [ ] Better commands syntax
 - [ ] Try to regroup some fields inside the embed output
 - [ ] ASYNC ASYNC ASYNC (replace requests with aiohttp if possible)
+- [ ] Integrate Pythark
 - ...
 
 ## Authors

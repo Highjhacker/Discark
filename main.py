@@ -23,6 +23,7 @@ initial_extensions = [
     'cogs.bittrex',
     'cogs.cryptopia',
     'cogs.litebit',
+    'cogs.cryptocompare'
 ]
 
 bot = commands.Bot(command_prefix=commands.when_mentioned_or("$"), description=description)
