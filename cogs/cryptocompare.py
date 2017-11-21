@@ -5,7 +5,7 @@ import arrow
 from discord.ext import commands
 
 
-class Cryptopia:
+class Cryptocompare:
     def __init__(self, bot):
         self.bot = bot
 
@@ -62,4 +62,4 @@ class Cryptopia:
             await self.bot.say("Command invalid.")
 
 def setup(bot):
-    bot.add_cog(Cryptopia(bot))
+    bot.add_cog(Cryptocompare(bot))

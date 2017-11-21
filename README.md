@@ -24,8 +24,8 @@ Ark Discord bot.
     - [x] Bittrex
     - [x] Cryptopia
         - [ ] Still some tweaks to do, but it works rn.
-    - [ ] COSS
-    - [ ] Cryptomate
+    - [x] COSS - No API currently
+    - [x] Cryptomate
     - [x] LiteBit.eu
         - [ ] Some tweaks and fixes to do, not sure about the embed in the constructor
 - [ ] Handle others site like CoinMarketCap
